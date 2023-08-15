@@ -1,3 +1,0 @@
-def train():
-
-    return None
