@@ -114,7 +114,7 @@ class DamageConfig(mrcnn.config.Config):
     # number of training steps per epoch
     STEPS_PER_EPOCH = 2815
     # learning rate and momentum
-    LEARNING_RATE=0.0002
+    LEARNING_RATE=0.001
     LEARNING_MOMENTUM = 0.9
     
     # regularization penalty
@@ -135,7 +135,7 @@ class DamageConfig(mrcnn.config.Config):
 
 if __name__ == '__main__':
     # prepare train dataset.
-    path = r"C:\Users\mktal\repos\EECSProject\CarDD_release\CarDD_release\CarDD_COCO"
+    path = r"C:\Users\mktal\repos\EECSProject\CarDD_release\CarDD_release\CarDD_COCO" #NOTE: Replace with your path
     train_set = DmgDataset()
     # change the dataset 
     train_set.load_dataset(path, "train")
@@ -153,7 +153,7 @@ if __name__ == '__main__':
     model = mrcnn.model.MaskRCNN(mode='training', model_dir='./', config=config)
 
     # load weights mscoco model weights
-    weights_path = 'cardamage_poly_mask_rcnn_trained.h5'
+    weights_path = 'mask_rcnn_coco.h5'
 
     # load the model weights
     model.load_weights(weights_path, 
@@ -168,7 +168,7 @@ if __name__ == '__main__':
     model.train(train_set, 
                 test_set, 
                 learning_rate=config.LEARNING_RATE, 
-                epochs=4, 
+                epochs=10, 
                 layers='heads',
                 augmentation = iaa.Sometimes(5/6,iaa.OneOf([
                     iaa.Fliplr(1),
@@ -178,5 +178,5 @@ if __name__ == '__main__':
                     iaa.Affine(scale=(0.5, 1.5))
                     ])))
 
-    model_path = 'cardamage_poly_mask_rcnn_trained3.h5'
+    model_path = 'cardamage_poly_mask_rcnn_trained.h5'
     model.keras_model.save_weights(model_path)
