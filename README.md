@@ -1,6 +1,6 @@
-# EECSProject
+# CarDamageApplication
 
-This project is for vehicle damage detection using the MaskR-CNN model by Matterport.
+This project is for vehicle damage detection using the MaskR-CNN model by Matterport. It will eventually host other models for damage severity and location, along with a pipeline for using the models together for damage cost prediction.
 
 ## Installation
 1. Clone the repository
