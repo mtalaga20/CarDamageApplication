@@ -108,7 +108,7 @@ def evaluate_model(dataset, model, cfg):
     return mAP, precision, recall, class_ap, size_ap
 
 #Eval
-path = r"C:\Users\mktal\repos\EECSProject\CarDD_release\CarDD_release\CarDD_COCO"
+path = r"C:\Users\mktal\repos\EECSProject\CarDD_release\CarDD_release\CarDD_COCO" #NOTE: Replace with your folder
 
 #Evaluation
 test_set = DamageDataset()
@@ -117,7 +117,7 @@ test_set.prepare()
 
 cfg = PredictionConfig()
 model = mrcnn.model.MaskRCNN(mode='inference', model_dir='./', config=cfg)
-model_path = 'cardamage_poly_mask_rcnn_trained13.h5'
+model_path = 'cardamage_poly_mask_rcnn_trained.h5'
 model.load_weights(model_path, by_name=True) 
 
 # evaluate model on test dataset
