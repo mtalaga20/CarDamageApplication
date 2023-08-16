@@ -11,5 +11,6 @@ This project is for vehicle damage detection using the MaskR-CNN model by Matter
 
 ## Usage
 
-1. Train - `python carDamage_training.py`
-2. Test - `python carDamage_evaluation.py`
+1. Replace the path variable in the carDamage_evaluation.py and carDamage_training.py files with the path to your data.
+2. Train - `python carDamage_training.py`
+3. Test - `python carDamage_evaluation.py`
